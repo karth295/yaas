@@ -138,3 +138,38 @@ class Blueprint(object):
 
         return ret
 
+class KerberosAdminCredentials(object):
+    alias = 'kdc.admin.credential'
+    type = 'TEMPORARY'
+    def __init__(self, principal, password):
+        self.principal = principal
+        self.password = password
+
+class HostGroupMappings(object):
+    pass
+
+class Template(object):
+    def __init__(self,
+                 blueprint_name,
+                 host_group_mappings,
+                 default_password=None,
+                 configuration=None,
+                 config_recommendation_strategy=None,
+                 credentials=None,
+                 security=None):
+
+        self.blueprint_name = blueprint_name
+        self.host_groups = host_groups
+        self.default_password = defualt_password
+        self.configuration = configuration
+        self.config_recommendation_strategy = config_recommendation_strategy
+        self.credentials = credentials or []
+        self.security = security
+
+    @classmethod
+    def parse(cls, raw):
+        pass
+
+    def serialize(self):
+        pass
+
